@@ -77,7 +77,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 0)
+    check(monkeys.count() == 4)
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
     // Try to delete 10 monkeys
@@ -91,7 +91,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 4)
+    check(monkeys.count() == 0)
     check(monkeyCounter(monkeys) == "There are no monkeys!")
 }
 
@@ -121,6 +121,7 @@ fun showMonkeys(monkeyList: List<String>) {
  */
 fun getNewMonkey(monkeyList: MutableList<String>) {
     // Ask the user for a monkey name (no blanks)
+    print("Add a New Monkey: ")
     val monkeyName = readln()
     // Add the name to the list
     monkeyList.add(monkeyName)
@@ -148,7 +149,7 @@ fun monkeyCounter(monkeyList: List<String>): String {
 
 
 /**
- * Returns the name of the monkey
+ * Returns the name of the monkey with the longest name
  */
 fun longestMonkeyName(monkeyList: List<String>): String {
     // Loop through the list and find the longest name
@@ -167,11 +168,13 @@ fun longestMonkeyName(monkeyList: List<String>): String {
  * if the list is not empty
  */
 fun deleteFirstMonkey(monkeyList: MutableList<String>) {
-    // Remove the first one from the list
-    val deadMonkey = monkeyList[0]
-    monkeyList.removeAt(0)
-    // Show some feedback
-    println("Removing monkey: $deadMonkey")
+    if (monkeyList.isNotEmpty()) {
+        // Remove the first one from the list
+        val deadMonkey = monkeyList[0]
+        monkeyList.removeAt(0)
+        // Show some feedback
+        println("Removing monkey: $deadMonkey")
+    }
 }
 
 
@@ -181,8 +184,9 @@ fun deleteFirstMonkey(monkeyList: MutableList<String>) {
  */
 fun deleteLastMonkey(monkeyList: MutableList<String>) {
     // Remove the last one from the list
+    val deadMonkey = monkeyList[monkeyList.size - 1]
     monkeyList.removeLast()
     // Show some feedback
-    println("Removing monkey: NAME HERE")
+    println("Removing monkey: $deadMonkey")
 }
 
